@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+@layer base {
+  html {
+    @apply font-ibm-plex-sans;
+  }
+
+  h1 {
+    @apply font-ibm-plex-serif;
+    @apply text-didomi-blue text-5xl font-bold;
+  }
+
+  .header-pill {
+    @apply p-1.5;
+    @apply inline-block;
+    @apply font-bold text-sm text-didomi-light-blue;
+    @apply border border-solid rounded-full border-didomi-light-blue;
+  }
+}
