@@ -11,9 +11,18 @@
     @apply font-ibm-plex-sans;
   }
 
+  body {
+    @apply p-12;
+  }
+
   h1 {
     @apply font-ibm-plex-serif;
     @apply text-didomi-blue text-5xl font-bold;
+  }
+
+  h3 {
+    @apply font-ibm-plex-serif;
+    @apply text-didomi-blue text-3xl;
   }
 
   .header-pill {

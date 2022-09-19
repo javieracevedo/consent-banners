@@ -17,6 +17,7 @@ module.exports = {
     'react'
   ],
   rules: {
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   }
 };
