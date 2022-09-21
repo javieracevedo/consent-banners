@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import ConsentBanner from './views/ConsetBanners';
+import ConsentBanner from './views/ConsentBanners';
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import api from '../api';
-import { PillRadioButton } from './PillRadioButton';
+import api from '../../api';
+import { PillRadioButton } from '../PillRadioButton';
 
 function ConsentBannerSelection() {
   const [banners, setBanners] = useState([]);
@@ -35,7 +35,7 @@ function ConsentBannerSelection() {
         ))}
       </fieldset>
       <figure className="flex w-10/12">
-        <img src={selectedBanner.imagePath} className="basis-8/12 w-full" alt="conset banner format" />
+        <img src={selectedBanner.imagePath} className="basis-8/12 w-full" alt={`${selectedBanner.label} consent banner format`} />
         <figcaption className="basis-4/12 mt-10">{selectedBanner.description}</figcaption>
       </figure>
     </>
