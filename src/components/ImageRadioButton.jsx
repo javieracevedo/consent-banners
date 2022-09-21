@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BaseRadioButton } from './BaseRadioButton';
 
 function getCheckedClasses(isChecked) {
   const checkedClasses = 'text-white bg-didomi-gray ';
@@ -13,28 +12,35 @@ function getLabelClasses(isChecked) {
   return commonClasses.concat(getCheckedClasses(isChecked));
 }
 
-export function PillRadioButton(props) {
+export function PillRadioButton({
+  id, name, label, checked, onRadioButtonClicked, logoImage
+}) {
   return (
-    <BaseRadioButton
-      {...props}
-      labelClass={getLabelClasses(props.checked)}
+    <label
+      htmlFor={id}
+      className={getLabelClasses(checked)}
     >
-      {props.children}
-    </BaseRadioButton>
+      <input
+        id={id}
+        name={name}
+        type="radio"
+        className="hidden"
+        checked={checked}
+        onChange={onRadioButtonClicked}
+      />
+      {logoImage}
+      {label}
+    </label>
   );
 }
 
 PillRadioButton.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
   onRadioButtonClicked: PropTypes.func.isRequired,
-  checked: PropTypes.bool,
-  children: PropTypes.element
-};
-
-PillRadioButton.defaultProps = {
-  checked: false,
-  children: null
+  logoImage: PropTypes.element.isRequired
 };
 
 export default PillRadioButton;

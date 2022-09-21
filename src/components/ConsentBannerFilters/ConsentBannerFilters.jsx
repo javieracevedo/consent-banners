@@ -28,10 +28,11 @@ function ConsentBannerSelection() {
             key={banner.id}
             onRadioButtonClicked={() => setSelectedBanner(banner)}
             checked={selectedBanner.id === banner.id}
-            label={banner.label}
             id={banner.id}
             name="banner-options"
-          />
+          >
+            <p>{banner.label}</p>
+          </PillRadioButton>
         ))}
       </fieldset>
       <figure className="flex w-10/12">
