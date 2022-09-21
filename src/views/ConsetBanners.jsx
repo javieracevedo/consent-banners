@@ -6,8 +6,7 @@ function ConsentBanner() {
     <div className="flex flex-row lg:flex-nowrap lg:gap-y-0 lg:gap-x-24 flex-wrap gap-x-14 gap-y-12">
       <section className="lg:basis-1/5 basis-full">
         <div className="header-pill">Performance</div>
-        {/* TODO: do not use br, instead use text wrapping tools or something */}
-        <h1 className="pt-1 break-words">
+        <h1>
           Consent Banner Performance
         </h1>
         <p className="pt-4">
