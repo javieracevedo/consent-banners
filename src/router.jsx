@@ -5,10 +5,6 @@ import ConsentBanner from './views/ConsentBanners';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <h1>Home</h1>
-  },
-  {
-    path: '/consent-banners',
     element: ConsentBanner
   }
 ]);

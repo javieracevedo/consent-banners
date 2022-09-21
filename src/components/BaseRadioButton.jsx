@@ -23,7 +23,7 @@ export function BaseRadioButton({
 }
 
 BaseRadioButton.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onRadioButtonClicked: PropTypes.func.isRequired,
   checked: PropTypes.bool,

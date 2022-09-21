@@ -1,46 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-function getCheckedClasses(isChecked) {
-  const checkedClasses = 'text-white bg-didomi-gray ';
-  const uncheckedClasses = 'text-didomi-gray bg-didomi-light-blue border';
-  return isChecked ? checkedClasses : uncheckedClasses;
-}
+import { BaseRadioButton } from './BaseRadioButton';
 
 function getLabelClasses(isChecked) {
-  const commonClasses = 'my-2 border rounded-full px-2 py-2 mr-2 font-semibold cursor-pointer hover:opacity-80 select-none ';
-  return commonClasses.concat(getCheckedClasses(isChecked));
+  const commonClasses = 'mr-4 mb-2 border rounded-lg p-2 pb-1 font-semibold cursor-pointer hover:opacity-70 select-none';
+  const radioButtonCheckedClasses = isChecked ? 'bg-didomi-gray' : 'bg-didomi-light-blue';
+  return `${commonClasses} ${radioButtonCheckedClasses}`;
 }
 
-export function PillRadioButton({
-  id, name, label, checked, onRadioButtonClicked, logoImage
-}) {
+function getCaptionClasses(isChecked) {
+  const commonClasses = 'font-semibold text-xs';
+  const radioButtonCheckedClasses = isChecked ? 'text-white' : 'text-didomi-gray';
+  return `${commonClasses} ${radioButtonCheckedClasses}`;
+}
+
+export function ImageRadioButton(props) {
   return (
-    <label
-      htmlFor={id}
-      className={getLabelClasses(checked)}
-    >
-      <input
-        id={id}
-        name={name}
-        type="radio"
-        className="hidden"
-        checked={checked}
-        onChange={onRadioButtonClicked}
-      />
-      {logoImage}
-      {label}
-    </label>
+    <BaseRadioButton {...props} labelClass={getLabelClasses(props.checked)}>
+      <figure className='flex flex-col items-center'>
+        <img src={props.imagePath} alt={props.imageAlt} className='w-24 border-2 border-white rounded-lg' />
+        <figcaption className={getCaptionClasses(props.checked)}>{props.children}</figcaption>
+      </figure>
+    </BaseRadioButton>
   );
 }
 
-PillRadioButton.propTypes = {
-  id: PropTypes.number.isRequired,
+ImageRadioButton.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  checked: PropTypes.bool.isRequired,
   onRadioButtonClicked: PropTypes.func.isRequired,
-  logoImage: PropTypes.element.isRequired
+  checked: PropTypes.bool,
+  children: PropTypes.string,
+  imagePath: PropTypes.string
 };
 
-export default PillRadioButton;
+ImageRadioButton.defaultProps = {
+  checked: false,
+  children: null,
+  imagePath: ""
+};
+
+export default ImageRadioButton;

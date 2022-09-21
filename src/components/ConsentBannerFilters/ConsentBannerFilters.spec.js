@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import countries from '../../mocks/countries.json';
+
 
 import ConsentBannerSelection from './ConsentBannerFilters';
 
@@ -39,7 +41,7 @@ describe('ConsentBannerFilters Component Test', () => {
     expect(noDisagreeActionRadioButton).toBeVisible();
   })
 
-  it('displays the correct image and caption when each radio button is selected', async () => {
+  it('displays the correct image and caption when each banner radio option is selected', async () => {
     render(<ConsentBannerSelection />);
 
     const {
@@ -74,6 +76,35 @@ describe('ConsentBannerFilters Component Test', () => {
     const disagreeRadioButtonImage = screen.getByAltText('Disagree button consent banner format');
     expect(disagreeRadioButton).toBeChecked();
     expect(disagreeRadioButtonImage).toBeVisible();
+  })
+
+  it('selected the correct banner when image radio buttons are selected', async () => {
+    render(<ConsentBannerSelection />);
+
+    const {
+      disagreeRadioButton,
+      linkCloseRadioButton,
+      closeDisagreeRadioButton,
+      withoutAgreeLinkRadioButton,
+      noDisagreeActionRadioButton
+    } = await getConsentBannerFormatRadioButtons();
+
+    const europeOption = screen.getByLabelText('Europe');
+    const italyOption = screen.getByLabelText('Italy');
+    const franceOption = screen.getByLabelText('France');
+    const thailandOption = screen.getByLabelText('Thailand');
+
+    userEvent.click(europeOption);
+    expect(disagreeRadioButton).toBeChecked();
+
+    userEvent.click(italyOption);
+    expect(closeDisagreeRadioButton).toBeChecked();
+
+    userEvent.click(franceOption);
+    expect(withoutAgreeLinkRadioButton).toBeChecked();
+
+    userEvent.click(thailandOption);
+    expect(noDisagreeActionRadioButton).toBeChecked();
   })
 })
 

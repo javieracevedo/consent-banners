@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseRadioButton } from './BaseRadioButton';
 
-function getCheckedClasses(isChecked) {
-  const checkedClasses = 'text-white bg-didomi-gray ';
-  const uncheckedClasses = 'text-didomi-gray bg-didomi-light-blue border';
-  return isChecked ? checkedClasses : uncheckedClasses;
-}
 
 function getLabelClasses(isChecked) {
   const commonClasses = 'my-2 border rounded-full px-2 py-2 mr-2 font-semibold cursor-pointer hover:opacity-80 select-none ';
-  return commonClasses.concat(getCheckedClasses(isChecked));
+  const radioButtonCheckedClasses = isChecked ? 'text-white bg-didomi-gray' : 'text-didomi-gray bg-didomi-light-blue border';
+  return `${commonClasses} ${radioButtonCheckedClasses}`;
 }
 
 export function PillRadioButton(props) {
@@ -25,7 +21,7 @@ export function PillRadioButton(props) {
 }
 
 PillRadioButton.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onRadioButtonClicked: PropTypes.func.isRequired,
   checked: PropTypes.bool,

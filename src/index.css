@@ -15,10 +15,6 @@
     @apply p-20;
   }
 
-  .test {
-    color: blue;
-  }
-
   h1 {
     @apply font-ibm-plex-serif;
     @apply text-didomi-dark-blue text-5xl font-bold my-4;
